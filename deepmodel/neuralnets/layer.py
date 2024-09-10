@@ -36,8 +36,15 @@ class Linear(Layer):
         self.input = input 
         self.output = np.dot(self.input, self.weights) + self.bias 
 
+
     def backward(self, output_error: np.array, learning_rate: np.array): 
-        pass 
+        """Backward propagation, return de/dx"""
+        input_error = np.dot(output_error, self.input.T)
+        weight_gradient = np.dot(self.weights.T, output_error)
+        self.weights -= learning_rate * weight_gradient
+        # the derative of bias is the same as ouput_error 
+        self.bias -= learning_rate * output_error
+        return input_error  
     
 
 
