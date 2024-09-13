@@ -1,7 +1,7 @@
 import numpy as np 
+from .layer import Layer
 
-
-class Activations: 
+class Activations(Layer): 
     """
     Base Activation layers implementation 
     """
