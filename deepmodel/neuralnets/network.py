@@ -44,31 +44,30 @@ class Network:
 
 
     # train 
-    def train(self,X_train: np.ndarray, y_train: np.ndarray,  learning_rate: float, epochs: int): 
-        
+    def train(self, X_train: np.ndarray, y_train: np.ndarray, learning_rate: float, epochs: int):
         samples = X_train.shape[0]
 
-        # training loop 
-        for i in range(epochs): 
-            err = 0 
+        # Training loop
+        for epoch in range(epochs):
+            err = 0  # Accumulate error for all samples
 
-            for j in range(samples): 
+            for j in range(samples):
                 output = X_train[j]
-                # forward 
-                for layer in self.layers: 
+
+                # Forward pass
+                for layer in self.layers:
                     output = layer.forward(output)
-                
-                # compute loss 
+
+                # Compute loss (forward)
                 err += self.loss.forward(output, y_train[j])
 
-                # backward 
-                err = self.loss.backward(output, y_train[i])
-                for layer in reversed(self.layers): 
+                # Backward pass (backpropagation)
+                loss_grad = self.loss.backward(output, y_train[j])
 
-                    err = layer.backward(err, learning_rate)
+                for layer in reversed(self.layers):
+                    loss_grad = layer.backward(loss_grad, learning_rate)
 
-            # the average error on all sample 
-            err /= samples 
-            print(f'Epoch {i}: error = {err}')
-
+            # Average error for this epoch
+            err /= samples
+            print(f'Epoch {epoch + 1}: error = {err:.6f}')
 

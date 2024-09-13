@@ -35,16 +35,29 @@ class Linear(Layer):
         """Forward propagation, return output of given input"""
         self.input = input 
         self.output = np.dot(self.input, self.weights) + self.bias 
-
+        return self.output
 
     def backward(self, output_error: np.array, learning_rate: np.array): 
         """Backward propagation, return de/dx"""
-        input_error = np.dot(output_error, self.input.T)
-        weight_gradient = np.dot(self.weights.T, output_error)
+        # print(f"output_error shape: {output_error.shape}")
+        # print(f"self.input shape: {self.input.shape}")
+        # print(f"self.weights shape: {self.weights.shape}")
+
+
+        # input_error = np.dot(output_error, self.input.T)
+        # weight_gradient = np.dot(self.weights.T, output_error)
+        # self.weights -= learning_rate * weight_gradient
+        # # the derative of bias is the same as ouput_error 
+        # self.bias -= learning_rate * output_error
+        # return input_error  
+
+       
+        """Backward propagation, return de/dx"""
+        input_error = np.dot(output_error, self.weights.T)  # Ensure shapes are compatible
+        weight_gradient = np.dot(self.input.T, output_error)  # Ensure shapes are compatible
         self.weights -= learning_rate * weight_gradient
-        # the derative of bias is the same as ouput_error 
-        self.bias -= learning_rate * output_error
-        return input_error  
+        return input_error
+
     
 
 

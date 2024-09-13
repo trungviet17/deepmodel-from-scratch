@@ -13,6 +13,8 @@ class Activations(Layer):
     def forward(self, input: np.array):
         """ Forward propagation """
         self.input = input
+        if input is None:
+            raise ValueError("Input to forward propagation is None")
         return self.activation(self.input)
 
 
