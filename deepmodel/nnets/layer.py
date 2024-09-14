@@ -114,7 +114,22 @@ class Conv(Layer):
         self.bias -= learning_rate * output_gradient
         return input_gradient
 
+class Reshape(Layer): 
+    """
+    This layer uses to reshape input layer
+    """
+    def __init__(self, input_shape: tuple, output_shape: tuple): 
+        self.input_shape = input_shape 
+        self.output_shape = output_shape
 
+
+    # forward
+    def forward(self, input): 
+        return np.reshape(input, self.output_shape)
+         
+    # backward
+    def backward(self, output_gradient, learning_rate): 
+        return np.reshape(output_gradient, self.input_shape)
     
 
 if __name__ == '__main__': 

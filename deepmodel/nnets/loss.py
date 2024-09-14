@@ -35,3 +35,10 @@ class MSELoss(Loss):
         super().__init__(self.mse, self.mse_prime)
 
 
+class BCELoss(Loss): 
+
+    def __init__(self): 
+        # x is y_pred, y is y_true
+        self.bce = lambda x, y: -np.mean(y * np.log(x) + (1 - x) * np.log(1 - y))
+        self.bce_prime = lambda x, y: ( (1 - y)/(1 - x) - y / x) / np.size(y)
+        super().__init__(self.bce, self.bce_prime)
