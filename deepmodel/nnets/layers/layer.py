@@ -51,8 +51,6 @@ class Conv(Layer):
     This is convolution layer implementation 
     
     """
-
-
     def __init__(self, input_shape: tuple, kernel_size: int, depth: int): 
         """
         depth : is the number of kernel 
@@ -103,7 +101,6 @@ class Conv(Layer):
         for i in range(self.depth): 
 
             for j in range(self.input_depth): 
-
                 kernel_gradient[i, j] = signal.correlate2d(self.input[j], output_gradient[i], "valid")
                 input_gradient[i] += signal.convolve2d(output_gradient[i], self.kernels[i, j], "full")
 
@@ -131,6 +128,7 @@ class Reshape(Layer):
     def backward(self, output_gradient, learning_rate): 
         return np.reshape(output_gradient, self.input_shape)
     
+
 
 if __name__ == '__main__': 
 

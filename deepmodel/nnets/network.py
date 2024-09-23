@@ -1,5 +1,5 @@
 import numpy as np 
-from .layer import * 
+from .layers.layer import * 
 from .loss import Loss, MSELoss
 
 from typing import List
