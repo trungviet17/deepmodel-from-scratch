@@ -10,8 +10,8 @@ In this project, I am re-implementing commonly used neural networks such as LSTM
 | **Name**   | **Directory**   | **Status**  | **Blog**     |
 |:---------:|:----------:|:-----------:|:------------:|
 | **Fully-connected layer** | [code](deepmodel/nnets) | ✔️ done | None    |
-| 🚧 **Convolution neural network** | [code](deepmodel/nnets/layers/layer.py) | ✔️ done| None    |
-| ❌ **RNN** | [code]() | 🔄 update   | None    |
-| ❌ **Transformer** | [code](deepmodel/transformer) | 🔄 update   | None    |
+| **Convolution neural network** | [code](deepmodel/nnets/layers/layer.py) | ✔️ done| None    |
+| **RNN** | [code]() | 🔄 update   | None    |
+| **Transformer** | [code](deepmodel/transformer) | 🔄 update   | None    |
 
 
