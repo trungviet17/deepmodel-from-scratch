@@ -21,16 +21,16 @@ class DecoderLayer(nn.Module):
 
 
 
-    def forward(self, x, mask):
+    def forward(self, x, causual_mask, cross_mask):
 
-        att_output = self.masked_multi_att(x, mask)
+        att_output = self.masked_multi_att(x, causual_mask)
         x = self.norm1(x + self.dropout(att_output))
 
-        att_output = self.multi_att(x, mask)
+        att_output = self.multi_att(x, cross_mask)
         x = self.norm2(x + self.dropout(att_output))
 
         ff_out = self.feedforward(x)
-        x = self.norm3(x + self.dropout(att_output))
+        x = self.norm3(x + self.dropout(ff_out))
 
         return x 
     
@@ -45,14 +45,23 @@ class TransformerDecoder(nn.Module):
         self.linear = nn.Linear(d_model, vocab_size)
 
 
-    def forward(self, x, mask): 
+    def forward(self, x, causual_mask, cross_mask): 
         
 
         x = self.output_embedding(x)
         x = self.positional_embedding(x)
 
         for layer in self.decoders:
-            x = layer(x, mask)
+            x = layer(x, causual_mask, cross_mask)
 
         return x 
+
+
+if __name__ == "__main__": 
+
+
+    def test(): 
+        pass 
+
+
 

@@ -48,3 +48,13 @@ class TransformerEncoder(nn.Module):
             x = layer(x, mask)
 
         return x
+    
+
+if __name__ == '__main__': 
+    
+    def test(): 
+        pass 
+    
+    
+    
+    pass 
