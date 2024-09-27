@@ -2,7 +2,7 @@
  
 ## Introduction 
 
-In this project, I am re-implementing commonly used neural networks such as LSTM, RNN, CNN, etc., in typical architectures by using basic libraries like NumPy instead of supported frameworks like PyTorch or TensorFlow. This re-implementation helps me, as well as others, to better understand these neural network architectures and how to effectively implement and deploy them.Secondly, I will experiment with the neural networks I have implemented using some simple tasks and compare their results with networks built using PyTorch. With more complex neural networks, I will use support libraries such as PyTorch
+In this repository, I will re-implement neural network architectures commonly used in deep learning from scratch. For simpler architectures like RNN, CNN layers, I will use the NumPy library, and for more complex networks, I will implement them using PyTorch. This implementation is intended for learning purposes
 
 
 ## Table of content 
