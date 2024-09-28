@@ -21,7 +21,7 @@ class EncoderLayer(nn.Module):
 
 
     def forward(self, x, mask ): 
-        att_ouput = self.multi_att(x, mask )
+        att_ouput = self.multi_att(x, x , x, mask )
         x = self.norm1(x + self.dropout(att_ouput))
         ff = self.feedforward(x)
         return self.norm2(x + self.dropout(ff))

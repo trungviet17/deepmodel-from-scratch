@@ -58,12 +58,12 @@ class MultiHeadAttention(nn.Module):
     
  
     # forward function 
-    def forward(self, x): 
-        query = self.split_heads(self.query_layer(x))
-        value = self.split_heads(self.value_layer(x))
-        key = self.split_heads(self.key_layer(x))
+    def forward(self, query, key, value, mask = None): 
+        query = self.split_heads(self.query_layer(query))
+        value = self.split_heads(self.value_layer(value))
+        key = self.split_heads(self.key_layer(key))
 
-        att_scores = self.compute_attention(query, key, value)
+        att_scores = self.compute_attention(query, key, value, mask )
         output = self.output_layer(self.concat(att_scores))
 
         return output 

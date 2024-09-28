@@ -31,6 +31,16 @@ class Transformer(nn.Module):
 
         src_output = self.encoder_block(src, src_mask)
 
-        tar_output = self.decoder_block(tar, src_mask, tar_mask)
+        tar_output = self.decoder_block(tar, src_mask, tar_mask, src_output)
 
-        
+        return tar_output 
+    
+
+
+
+
+if __name__ == '__main__': 
+
+
+    def test(): 
+        pass 
